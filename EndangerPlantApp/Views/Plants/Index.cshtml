@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EndangerPlantApp.Data.Entities.Plant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    tr {
+        border-bottom: 0px solid;
+    }
+</style>
+
+<h1 align="center">Plant List</h1>
+
+<p align="center">
+    <a asp-action="Create">Add a Plant</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Common Name</th>
+            <th>Scientific Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>LAT</th>
+            <th>LNG</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                <td style="background-color: #79ba57; border-radius:10%; padding:3px; border-radius:0%; text-align:center">
+                @Html.DisplayFor(modelItem => item.CommonName)
+            </td>
+                <td style="text-align:center; background-color:#ABD989; padding:3px; border-radius:0%;">
+                @Html.DisplayFor(modelItem => item.ScientificName)
+            </td>
+                <td style="background-color: #79ba57; border-radius:10%; padding:3px; border-radius:0%; text-align:center">
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+                <td style="text-align:center; background-color:#ABD989; padding:3px; border-radius:0%;">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+                <td style="background-color: #73ba4e; padding:3px; border-radius:0%; text-align:center">
+                @Html.DisplayFor(modelItem => item.Lat)
+            </td>
+                <td style="background-color: #54823c; padding:3px; border-radius:0%; text-align:center">
+                @Html.DisplayFor(modelItem => item.Long)
+            </td>
+                <td style="text-align:center">
+                    <a asp-action="Edit" asp-route-id="@item.PlantId" style="background-color: #98cf76;border: 0px; border-radius:20%; padding:3px; text-decoration: none; color: black">Edit</a> <br>
+                    <a asp-action="Details" asp-route-id="@item.PlantId" style="background-color: #6e9656; border: 0px; border-radius:20%; padding:3px; text-decoration: none; color: black">Details</a> <br>
+                    <a asp-action="Delete" asp-route-id="@item.PlantId" style="background-color: #55783e; border: 0px; border-radius:20%; padding:3px; text-decoration: none; color: black">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
