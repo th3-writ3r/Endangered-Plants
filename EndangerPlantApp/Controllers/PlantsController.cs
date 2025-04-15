@@ -47,7 +47,6 @@ namespace EndangerPlantApp.Controllers
         }
 
         // GET: Plants/Create
-        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -56,7 +55,6 @@ namespace EndangerPlantApp.Controllers
         // POST: Plants/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PlantId,CommonName,ScientificName,Type,Description,Lat,Long")] Plant plant)
@@ -71,7 +69,6 @@ namespace EndangerPlantApp.Controllers
         }
 
         // GET: Plants/Edit/5
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Plant == null)
@@ -90,7 +87,6 @@ namespace EndangerPlantApp.Controllers
         // POST: Plants/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("PlantId,CommonName,ScientificName,Type,Description,Lat,Long")] Plant plant)
@@ -124,7 +120,6 @@ namespace EndangerPlantApp.Controllers
         }
 
         // GET: Plants/Delete/5
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Plant == null)
@@ -143,7 +138,6 @@ namespace EndangerPlantApp.Controllers
         }
 
         // POST: Plants/Delete/5
-        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
